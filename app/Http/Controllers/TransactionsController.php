@@ -57,7 +57,7 @@ class TransactionsController extends Controller
     public function delete($id){
         $transactions = transactions::find($id);
         $transactions->delete();
-        return redirect()->back()->with('deleted','Kategori telah dihapus');
+        return redirect()->back()->with('deleted','Transaksi telah dihapus');
     }
 
     //items
@@ -81,7 +81,7 @@ class TransactionsController extends Controller
         $transaction_details->item = $request->input('item');
         $transaction_details->quantity = $request->input('quantity');
         $transaction_details->save();
-        return redirect()->back()->with('updated','Transaksi telah diupdate');
+        return redirect()->back()->with('updated','Item telah diupdate');
     }
     public function deleteitem($id){
         $transaction_details = transaction_details::find($id);

@@ -73,7 +73,7 @@ Transaksi
                 <td>
                   <a class="btn btn-primary btn-sm" href="{{route('admin.transactions.view',['id'=>$transaction->id])}}"><i class="fa fa-eye"></i></a>
                   <a class="btn btn-success btn-sm" href="{{route('admin.transactions.edit',['id'=>$transaction->id])}}"><i class="fa fa-edit"></i></a>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_kategori_{{ $transaction->id }}"><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_transaksi_{{ $transaction->id }}"><i class="fa fa-trash"></i></button>
                   <!--modal edit-->
                   <form action="{{route('admin.transactions.update',['id'=>$transaction->id])}}" enctype="multipart/form-data" method="post">
                     <div class="modal fade" id="edit_kategori_{{ $transaction->id }}">
@@ -107,7 +107,7 @@ Transaksi
                   </form>
                   <!--modal delete-->
                   <form method="POST" action="{{route('admin.transactions.delete',['id'=>$transaction->id])}}">
-                    <div class="modal fade" id="hapus_kategori_{{$transaction->id}}">
+                    <div class="modal fade" id="hapus_transaksi_{{$transaction->id}}">
                       <div class="modal-dialog">
                         <div class="modal-content bg-danger">
                           <div class="modal-header">
@@ -117,7 +117,7 @@ Transaksi
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p>Yakin ingin hapus kategori ini?</p>
+                            <p>Yakin ingin hapus transaksi ini?</p>
                             @csrf
                             {{method_field('DELETE')}}
                           </div>

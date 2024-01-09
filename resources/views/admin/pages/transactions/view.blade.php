@@ -20,7 +20,7 @@ Transaksi
           <dt class="col-sm-4">Kode Transaksi</dt>
           <dd class="col-sm-8">{{$transactions->no_transaction}}</dd>
           <dt class="col-sm-4">Tanggal Transaksi</dt>
-          <dd class="col-sm-8">{{Carbon\Carbon::parse($transactions->transaction_date)->translatedFormat('d F Y')}}</dd>
+          <dd class="col-sm-8">{{$transactions->transaction_date}}</dd>
         </dl>
       </div>
       <div class="card-footer">
@@ -125,7 +125,7 @@ Transaksi
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p>Yakin ingin hapus kategori ini?</p>
+                            <p>Yakin ingin hapus item ini?</p>
                             @csrf
                             {{method_field('DELETE')}}
                           </div>
