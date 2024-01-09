@@ -37,10 +37,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/transactions/add',[TransactionsController::class,'add'])->name('admin.transactions.add');
     Route::post('/transactions/add',[TransactionsController::class,'save'])->name('admin.transactions.save')->middleware('auth');
     Route::get('/transactions/view/{id}',[TransactionsController::class,'view'])->name('admin.transactions.view')->middleware('auth');
+    Route::get('/transactions/edit/{id}',[TransactionsController::class,'edit'])->name('admin.transactions.edit')->middleware('auth');
     Route::put('/transactions/edit/{id}',[TransactionsController::class,'update'])->name('admin.transactions.update')->middleware('auth');
     Route::delete('/transactions/delete/{id}',[TransactionsController::class,'delete'])->name('admin.transactions.delete')->middleware('auth');
     //menambahkan item temporary
-    Route::post('/transactions/addtemporaryitems',[TransactionsController::class,'savetemporaryitems'])->name('admin.transactions.savetemporaryitems');
+    Route::post('/transactions/additem/{id}',[TransactionsController::class,'saveitem'])->name('admin.transactions.saveitem')->middleware('auth');
+    Route::put('/transactions/updateitem/{id}',[TransactionsController::class,'updateitem'])->name('admin.transactions.updateitem')->middleware('auth');
+    Route::delete('/transactions/deleteitem/{id}',[TransactionsController::class,'deleteitem'])->name('admin.transactions.deleteitem')->middleware('auth');
 
     //manajemen kategori
     //Route::get('/kategori',[KategoriController::class,'daftar'])->name('admin.kategori.daftar')->middleware('auth');

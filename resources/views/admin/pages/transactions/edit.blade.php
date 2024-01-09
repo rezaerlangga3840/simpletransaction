@@ -6,25 +6,27 @@ Transaksi
 @section('pagebreadcrumb')
 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
 <li class="breadcrumb-item"><a href="{{route('admin.transactions.daftar')}}">Transaksi</a></li>
-<li class="breadcrumb-item active">Transaksi Baru</li>
+<li class="breadcrumb-item"><a href="{{route('admin.transactions.view',['id'=>$transactions->id])}}">Lihat Transaksi</a></li>
+<li class="breadcrumb-item active">Edit Transaksi</li>
 @endsection
 @section('pagecontent')
 <div class="row">
   <div class="col-md-12">
-    <form action="{{route('admin.transactions.save')}}" enctype="multipart/form-data" method="post">
+    <form action="{{route('admin.transactions.update',['id'=>$transactions->id])}}" enctype="multipart/form-data" method="post">
       <div class="card">
         <div class="card-header">
           Transaksi baru
         </div>
         <div class="card-body">
           @csrf
+          {{method_field('PUT')}}
           <div class="form-group">
             <label for="no_transaction">Kode Transaksi</label>
-            <input type="text" name="no_transaction" value="{{old('no_transaction')}}" class="form-control" id="no_transaction_1" placeholder="Misal : 001">
+            <input type="text" name="no_transaction" value="{{$transactions->no_transaction}}" class="form-control" id="no_transaction_1" placeholder="Misal : 001">
           </div>
           <div class="form-group">
             <label for="transaction_date">Tanggal</label>
-            <input name="transaction_date" type="date" id="transaction_date" class="form-control">
+            <input name="transaction_date" type="date" value="{{$transactions->transaction_date}}" id="transaction_date" class="form-control">
           </div>
         </div>
         <div class="modal-footer justify-content-between">

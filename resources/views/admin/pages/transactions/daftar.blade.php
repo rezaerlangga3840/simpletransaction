@@ -57,6 +57,8 @@ Transaksi
           <thead>
           <tr>
             <th>Kode Transaksi</th>
+            <th>Total Item</th>
+            <th>Total Quantity</th>
             <th>Tanggal</th>
             <th>Opsi</th>
           </tr>
@@ -65,9 +67,12 @@ Transaksi
             @foreach($transactions as $transaction)
               <tr>
                 <td>{{$transaction->no_transaction}}</td>
+                <td>{{\App\Models\transaction_details::where('transaction_id',$transaction->id)->count()}}</td>
+                <td>{{\App\Models\transaction_details::where('transaction_id',$transaction->id)->sum('quantity')}}</td>
                 <td>{{$transaction->transaction_date}}</td>
                 <td>
-                  <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_kategori_{{ $transaction->id }}"><i class="fa fa-edit"></i></button>
+                  <a class="btn btn-primary btn-sm" href="{{route('admin.transactions.view',['id'=>$transaction->id])}}"><i class="fa fa-eye"></i></a>
+                  <a class="btn btn-success btn-sm" href="{{route('admin.transactions.edit',['id'=>$transaction->id])}}"><i class="fa fa-edit"></i></a>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_kategori_{{ $transaction->id }}"><i class="fa fa-trash"></i></button>
                   <!--modal edit-->
                   <form action="{{route('admin.transactions.update',['id'=>$transaction->id])}}" enctype="multipart/form-data" method="post">
